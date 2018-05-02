@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<center>
+	<a href="BarcodeScanner.html">Scan barcode</a>
+	<h1>Barcode Generator{{content}}</h1>
+	<h2><b>Enter product</b></h2><br>
+    <form action='/barcodeGenerator' method="GET">
+	Product ID: 
+	<input type="text" id="productID" name="productID"><br><br>
+	Product name: 
+	<input type="text" id="productName" name="productName"><br><br>
+	Barcode: 
+	<input type="text" id="barcodeInput" name="barcodeInput"><br><br>
+	
+	<p class="big">
+	<select id="selection" name="BarcodeType">
+	<option value="code128">Code128</option>
+	<option value="code39">Code39</option>
+	<option value="ean2">EAN2</option>
+	<option value="ean5">EAN5</option>
+	<option value="ean8">EAN8</option>
+	<option value="ean13">EAN13</option>
+	<option value="upc">UPC</option>
+	<option value="itf">ITF</option>
+	<option value="msi">MSI</option>
+	<option value="pharmacode">Pharmacode</option>
+	</select>
+	<br><br>
+	</p>
+	<input type="submit" id="generateButton" value="Generate" />
+	<hr>
+    </form>
+</center>
+</head>
+
+<body>
+<center>	
+	<svg id="barcode"></svg>
+	<script src="https://cdn.jsdelivr.net/jsbarcode/3.6.0/JsBarcode.all.min.js"></script>
+	
+	<style>
+	table, th, td {
+		border: 1px solid black;
+		border-collapse: collapse;
+	}
+	th, td{
+		padding: 10px;
+		text-align: center;
+	}
+	</style>
+	
+	<table id="table">
+	<tr id="1">
+		<th>Product ID</th>
+		<th>Product name</th>
+		<th>Barcode</th>		
+	</tr>
+	</table>
+	
+	<script>
+		var rowPosition=1;
+		var id=1;
+		var index=0;
+		var table=document.getElementById("table");
+		
+		function addRow(){					
+			var row=table.insertRow(rowPosition);
+			row.rowIndex=index;
+			var cell1=row.insertCell(0);
+			var cell2=row.insertCell(1);
+			var cell3=row.insertCell(2);
+			cell1.innerHTML=document.getElementById("productID").value;
+			cell2.innerHTML=document.getElementById("productName").value;
+			cell3.innerHTML=document.getElementById("barcodeInput").value;
+			rowPosition++;
+			index++;
+			id++;
+		}
+	
+		document.getElementById("generateButton").addEventListener("click", function(){
+			addRow();
+			JsBarcode("#barcode", document.getElementById("barcodeInput").value,{
+				format: document.getElementById("selection").value
+			});	
+		});
+	</script>
+</center>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>myLittleShop</title>
+    <meta charset="utf-8"/>
+    <!--Font family-->
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!--PencilStudio CSS-->
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <!-- Mobile display -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="js/main.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+    <script src="routes/index.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid ">
+      <div class="row">
+        <div class="col-sm-2 bg-dark" id="sidebar">
+          <nav class="nav flex-column navbar-expand-lg nav-fill " >
+            <a class="nav-link active text-light navbar-brand" href="#"><h4>theLittleShop</h3></a>
+            <a class="nav-link text-light" href="#">Overview</a>
+            <a class="nav-link text-light" data-toggle="collapse"  href="#collapseExample" >Shop List</a>
+            <div class="collapse" id="collapseExample">
+              <div class="card card-body bg-light">
+                <nav class="nav nav-pills flex-column">
+                  <a class="nav-link ml-3 my-1" href="#shop1">Shop 1</a>
+                  <a class="nav-link ml-3 my-1" href="#shop2">Shop 2</a>
+                </nav>
+              </div>
+            </div>
+            <a class="nav-link text-light" href="#">Charts</a>
+            <a class="nav-link text-light" href="#">Accounts</a>
+          </nav>
+        </div>
+        <div class="col-sm ">
+          <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item active" aria-current="page">Overview</li>
+            </ol>
+            <nav class="navbar navbar-light bg-light">
+              <form class="form-inline">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+            </nav>
+          </nav>
+          <table class="table table-hover" id="product">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Item ID</th>
+                <th scope="col">Item Name</th>
+                <th scope="col">Quantity In Stock</th>
+                <th scope="col">Quantity Sold</th>
+                <th scope="col">Item Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>123</td>
+                <td>Cola Cola</td>
+                <td>{{item2.Coca_cola.quantity_in_stock}}</td>
+                <td>{{item2.Coca_cola.quantity_sold}}</td>
+                <td>{{item2.Coca_cola.price}}</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>124</td>
+                <td>Pepsi</td>
+                <td>{{item2.Pepsi.quantity_in_stock}}</td>
+                <td>{{item2.Pepsi.quantity_sold}}</td>
+                <td>{{item2.Pepsi.price}}</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>125</td>
+                <td>Fanta</td>
+                <td>{{item2.Fanta.quantity_in_stock}}</td>
+                <td>{{item2.Fanta.quantity_sold}}</td>
+                <td>{{item2.Fanta.price}}</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>126</td>
+                <td>MountainDew</td>
+                <td>{{item.MountainDew.quantity_in_stock}}</td>
+                <td>{{item.MountainDew.quantity_sold}}</td>
+                <td>{{item.MountainDew.price}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- <div class="col-sm-3">
+        </div> -->
+      </body>
+    </html>

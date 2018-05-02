@@ -1,0 +1,62 @@
+body{
+	background: #E1ECF9;
+}
+
+#sidebar {
+	margin: 0px;
+	height: 100vh;
+	background: #091D34;
+}
+
+#productTable{
+	margin-top: 40vh;
+}
+
+table{
+	background: #609CE1;
+}
+
+button{
+	width: 100px;
+	background: #0277BD;
+	border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;    
+    width: 100%;
+
+}
+button:hover{
+	background: #0288D1;
+}
+
+.promBtn{
+	width: 100px;
+}
+#productDiv{
+	position: fixed;
+	bottom: 10px;	
+	width: 50%;
+}
+
+#rightTable{
+	border: #091D34;
+}
+
+ tr:hover {background-color: #609CE1;}
+
+.item:hover{
+	background: #0288D1;
+}
+
+.nav-link:hover{
+	background: #0288D1;	
+}
+
+canvas.drawing, canvas.drawingBuffer {
+            position: absolute;
+            left: 0;
+            top: 5;
+    }

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Employee</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/employee.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/quagga.min.js"></script>
+  </head>
+  <body>
+    <div class="container-fluid ">  
+      <div class="row">
+        <div class="col-sm-2" id="sidebar" >
+          <nav class="nav flex-column navbar-expand-lg nav-fill " >
+            <a class="nav-link active text-light navbar-brand" href="#"><h4>theLittleShop</h3></a>
+            <a class="nav-link text-light" href="#">Home</a>
+            <a class="nav-link text-light" href="#">Inventory</a>
+            <a class="nav-link text-light" href="#">Transaction</a>
+          </nav>
+        </div>
+        <div class="col-sm-7 ">
+          <h3>Current Sales</h3>
+          <div class="table-responsive"style="height: 512px;overflow:auto;> <!-- style="height: 400px ;overflow:auto; -->
+          <table class="table table-primary" id="salesTable">
+            <thead id="table-head">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col" id="barcode">Item ID</th>
+                <th scope="col">Item Name</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Item Price</th>
+              </tr>
+            </thead>
+          </table>
+          
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div id="avatar">
+          <img src="images/user.svg"  width="40" height="40" alt="Employee Avatar">
+          <p> Employee Name</p>
+          <!-- <a class="btn btn-primary" href="#" role="button">Log out</a> -->
+          <table class="table" id="rightTable">
+            <tr>
+              <th scope="col">SubTotal</th>
+              <td scope="col" id="sub_total">0</td>
+            </tr>
+            <tr>
+              <th scope="col">Promotion</th>
+              <td scope="col" id="promotion">0</td>
+            </tr>
+            <tr>
+              <th scope="col">Tax</th>
+              <td scope="col" id="tax">0</td>
+            </tr>
+            <tr>
+              <th scope="col">Item ID</th>
+              <td scope="col">
+                <input type="text" id="item_id">
+              </td>
+            </tr>
+            <tr>
+              <th scope="col">Quantity</th>
+              <td scope="col">  <input type="number" name="quantity" min="1" value=1 id="quantity"></td>
+            </tr>
+            <tr>
+              <th scope="col">Total</th>
+              <td scope="col" id="sum">0</td>
+            </tr>
+          </table>
+          <table >
+            <tbody>
+              <tr>
+                <th>
+                  <button type="button" class="btn" id="add_btn" onclick="addFunc()">Add Item</button>
+                </th>
+                <th>
+                  <button type="button" class="btn promBtn" onclick="promFunc(10)">10%</button>
+                </th>
+              </tr>
+              <tr>
+                <th>
+                  <button type="button" class="btn" id="scan_btn">Scan Barcode</button>
+                </th>
+                <th>
+                  <button type="button" class="btn promBtn" onclick="promFunc(20)">20%</button>
+                </th>
+              </tr>
+              <tr>
+                <th>
+                  <button type="button" class="btn" id="voucher_btn"  data-toggle="modal" data-target="#voucherModal">Add Voucher</button>
+                </th>
+                <th>
+                  <button type="button" class="btn promBtn" onclick="promFunc(50)">50%</button>
+                </th>
+              </tr>
+              <tr>
+                <td colspan="2" rowspan="2">
+                  <button type="button" class="btn" id="pay_btn" onclick="payFunc()">Pay</button>
+                </td>
+              </tr>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!-- end container -->
+</div>
+<!-- Modal for Pay button-->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <!-- <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div> -->
+      <div class="modal-body">
+        <p id="my_modal_value"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal for Add Voucher button-->
+<div id="voucherModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <!-- <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div> -->
+      <div class="modal-body">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+          </div>
+          <input type="text" class="form-control" placeholder="Discount Percentage" aria-label="" aria-describedby="basic-addon1" id="voucherInput" style="width: 80px">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" id="voucherCloseBtn" class="btn btn-default" data-dismiss="modal" onclick="voucherFunct()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal for Camera-->
+<div id="camModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-body">
+        <div id="scanner-container"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" >Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="js/employee.js"></script>
+<script type="text/javascript" src="js/scanner.js"></script>
+</body>
+</html>
